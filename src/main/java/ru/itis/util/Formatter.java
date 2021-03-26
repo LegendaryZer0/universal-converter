@@ -126,7 +126,7 @@ public class Formatter {
     List<String> fromNumerators = reducedFractionFrom.getValue().getKey();
     List<String> toNumerators = reducedFractionTo.getValue().getKey();
     if (fromNumerators.size() != toNumerators.size())
-      throw new IllegalArgumentException("Can't convert");
+      throw new IllegalStateException("Can't convert");
 
 
     ArrayList<BigDecimal> numeratorsCoef = new ArrayList<>();
