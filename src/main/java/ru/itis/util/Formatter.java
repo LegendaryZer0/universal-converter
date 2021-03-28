@@ -76,7 +76,7 @@ public class Formatter {
           coef = coef.multiply(BigDecimal.valueOf(1 / Double.parseDouble(now)));
           it.remove();
         } catch (NumberFormatException ignored) {
-          //ignore
+          // ignore
         }
       }
 
@@ -126,8 +126,7 @@ public class Formatter {
     List<String> fromNumerators = reducedFractionFrom.getValue().getKey();
     List<String> toNumerators = reducedFractionTo.getValue().getKey();
     if (fromNumerators.size() != toNumerators.size())
-      throw new IllegalStateException("Can't convert");
-
+      throw new IllegalArgumentException("Can't convert");
 
     ArrayList<BigDecimal> numeratorsCoef = new ArrayList<>();
     ArrayList<BigDecimal> denumeratorsCoef = new ArrayList<>();
@@ -208,7 +207,7 @@ public class Formatter {
   }
 
   public void validationTransform(String toValidate) throws IllegalArgumentException {
-    Matcher m = Pattern.compile("\\s*\\/\\s*").matcher(toValidate);
+    Matcher m = Pattern.compile("(\\*)|(\\s)|(\\/)").matcher(toValidate);
     ArrayList<String> elements = new ArrayList<>();
     ArrayList<String> separators = new ArrayList<>();
     int pos;
@@ -217,13 +216,16 @@ public class Formatter {
       separators.add(m.group());
     }
     elements.add(toValidate.substring(pos));
-
+    log.info(elements.toString());
     for (String str : elements) {
       try {
-        Double.parseDouble(str);
+        if (!str.equals("")) {
+          Double.parseDouble(str);
+        }
       } catch (NumberFormatException e) {
         if (!info.containsKey(str)) {
-          log.info(str + "THERE SOME STR");
+          log.info(elements.toString());
+          log.info("non valid str::{}::!", str);
 
           throw new IllegalArgumentException("NO RULE");
         }

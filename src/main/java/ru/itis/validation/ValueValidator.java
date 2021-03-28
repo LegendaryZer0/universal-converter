@@ -14,11 +14,12 @@ public class ValueValidator implements ConstraintValidator<ValidValue, String> {
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     try {
-
+      log.info(value);
       formatter.validationTransform(value);
 
       return true;
     } catch (IllegalArgumentException e) {
+
       return false;
     }
   }

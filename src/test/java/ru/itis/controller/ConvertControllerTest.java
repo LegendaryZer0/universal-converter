@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     classes = Application.class,
     args = {"src/test/resources/test.csv"})
 @AutoConfigureMockMvc
-/*@ExtendWith(value=org.springframework.test.context.junit.jupiter.SpringExtension.class)*/
 class ConvertControllerTest {
 
   @Autowired private MockMvc mockMvc;

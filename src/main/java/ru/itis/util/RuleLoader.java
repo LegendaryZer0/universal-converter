@@ -7,7 +7,6 @@ import ru.itis.model.Pair;
 import ru.itis.reader.FileRuleReader;
 import ru.itis.reader.RuleCreater;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;

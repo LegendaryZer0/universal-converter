@@ -27,12 +27,12 @@ public class ConvertController {
     if (!result.hasErrors()) {
       try {
         return service.execute(convertInfo);
-      } catch (IllegalStateException e) {
-        response.setStatus(400);
+      } catch (IllegalArgumentException e) {
+        response.setStatus(404);
       }
 
     } else {
-      response.setStatus(404);
+      response.setStatus(400);
     }
     return "";
   }
