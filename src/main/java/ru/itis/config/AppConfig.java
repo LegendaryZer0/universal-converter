@@ -8,7 +8,6 @@ import ru.itis.reader.FileRuleReader;
 import ru.itis.reader.RuleCreater;
 
 import java.io.File;
-import java.nio.charset.Charset;
 
 @Configuration
 public class AppConfig {
@@ -24,8 +23,7 @@ public class AppConfig {
   @Bean
   public RuleCreater ruleCreater() {
     RuleCreater nodeCreater =
-        new RuleCreater(
-            fileRuleReader().read(new File(Application.filePath)));
+        new RuleCreater(fileRuleReader().read(new File(Application.filePath)));
     nodeCreater.setAdditionalFilePath(path);
     return nodeCreater;
   }
