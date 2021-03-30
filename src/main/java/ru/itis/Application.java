@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 @Import(AppConfig.class)
 public class Application implements ApplicationRunner {
 
-  public static String filePath = "src/test/resources/test2.csv";
+  public static String filePath = "src/test/resources/test.csv";
 
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
