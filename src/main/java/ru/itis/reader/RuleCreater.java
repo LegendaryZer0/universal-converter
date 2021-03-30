@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -50,7 +51,7 @@ public class RuleCreater {
       if (!usedMap.containsKey(ver)) dfs(ver, usedMap, ourTree);
     }
 
-    try (CSVWriter csvWriter = new CSVWriter(new FileWriter(additionalFilePath))) {
+    try (CSVWriter csvWriter = new CSVWriter(new FileWriter(additionalFilePath, StandardCharsets.UTF_8))) {
       Set<String> myNewSet = ourTree.keySet();
       for (String str : myNewSet) {
         ArrayList<Pair<String, BigDecimal>> arrayList = ourTree.get(str);

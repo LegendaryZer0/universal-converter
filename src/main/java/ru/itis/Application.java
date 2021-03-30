@@ -21,6 +21,9 @@ public class Application implements ApplicationRunner {
   public static String filePath = "src/test/resources/test.csv";
 
   public static void main(String[] args) {
+    filePath = Paths.get(args[0]).normalize().toAbsolutePath().toString();
+
+
     SpringApplication.run(Application.class, args);
   }
 
@@ -32,4 +35,6 @@ public class Application implements ApplicationRunner {
 
     log.info("Finale path to file{}", filePath);
   }
-  }
+
+
+}

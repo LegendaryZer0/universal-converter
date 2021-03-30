@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,9 @@ public class FileRuleReader {
   }
 
   public HashMap<String, ArrayList<Pair<String, BigDecimal>>> read(File fileName) {
-    try (CSVReader csvReader = new CSVReader(new java.io.FileReader(fileName))) {
+
+    try (CSVReader csvReader = new CSVReader(new java.io.FileReader(fileName, StandardCharsets.UTF_8))) {
+
       List<String[]> csvConvertConfig = csvReader.readAll();
       for (String[] info : csvConvertConfig) {
         if (info.length < 3) throw new IllegalArgumentException("Incorrect CSV file");
