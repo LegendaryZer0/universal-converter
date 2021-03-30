@@ -18,12 +18,9 @@ import java.nio.file.Paths;
 @Import(AppConfig.class)
 public class Application implements ApplicationRunner {
 
-  @Autowired private static final ReconTool reconTool = new ReconTool();
-  public static String filePath = "test.csv";
+  public static String filePath = "src/test/resources/test2.csv";
 
   public static void main(String[] args) {
-    reconTool.run(args);
-
     SpringApplication.run(Application.class, args);
   }
 
@@ -35,17 +32,4 @@ public class Application implements ApplicationRunner {
 
     log.info("Finale path to file{}", filePath);
   }
-
-  @Component
-  public static class ReconTool implements CommandLineRunner {
-
-    @Override
-    public void run(String... args) {
-      log.info("PATH TO FILE FROM CLR  -  {}", args);
-
-      filePath = Paths.get(args[0]).normalize().toAbsolutePath().toString();
-
-      log.info("Finale path to file{}", filePath);
-    }
   }
-}
